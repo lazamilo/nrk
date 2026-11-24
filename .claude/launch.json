@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"nrk-redesign","runtimeExecutable":"npx","runtimeArgs":["--yes","serve@14.2.4","-l","5391","/Users/lazarmilosevic/Desktop/nrk"],"autoPort":true,"port":5391}]}

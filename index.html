@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NRK – Nyheter, sport, TV og radio</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="is-loading">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="nrk-logo" viewBox="0 0 35 14"><path fill="currentColor" d="M0 12.999v-12h3.937v12H0Zm9.294-10.09L11.558 13H7.25l-2.704-12h2.417a2.276 2.276 0 0 1 1.513.55c.42.346.71.826.819 1.36ZM12.149 13v-12h3.938v12h-3.938Zm6.912-7.436a2.382 2.382 0 0 1-2.4-2.4 2.301 2.301 0 0 1 .321-1.2 2.41 2.41 0 0 1 3.278-.862c.356.21.653.506.862.862.215.363.326.778.321 1.2a2.35 2.35 0 0 1-.321 1.208 2.4 2.4 0 0 1-.862.87 2.3 2.3 0 0 1-1.2.322Zm2.99 7.436v-12h3.938v12h-3.937Zm8.923-5.442c.01.012.095.15.253.414s.364.602.617 1.014a314.615 314.615 0 0 1 1.597 2.62c.247.41.529.876.845 1.394H29.96c-.27-.44-.516-.837-.736-1.192-.22-.355-.453-.738-.7-1.149-.248-.41-.493-.81-.736-1.2-.242-.389-.45-.73-.625-1.022-.175-.293-.296-.49-.363-.592A1.747 1.747 0 0 1 26.513 7c.016-.29.11-.57.27-.811.067-.113.191-.313.371-.6s.392-.628.634-1.023c.242-.394.488-.797.736-1.208l.7-1.158.736-1.2h4.326L30.94 6.46a1.08 1.08 0 0 0-.17.54c.012.202.083.396.204.558Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8"/></symbol>
+</svg>
+
+<!-- Loader -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__logo"><svg><use href="#nrk-logo"/></svg></div>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#" aria-label="NRK forsiden"><svg><use href="#nrk-logo"/></svg></a>
+  <nav class="nav__links" aria-label="Hovedmeny">
+    <a href="#siste">Nyheter</a>
+    <a href="#sport">Sport</a>
+    <a href="#distrikt">Distrikt</a>
+    <a href="#tv">TV og radio</a>
+    <a href="#vaer">Vær</a>
+    <a href="#spill">Spill</a>
+  </nav>
+  <div class="nav__right">
+    <button class="nav__icon" aria-label="Søk"><svg><use href="#i-search"/></svg></button>
+    <a class="nav__login" href="#">Logg inn</a>
+    <button class="nav__burger" aria-label="Meny" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__grid">
+    <div><h3>Nyheter</h3><a href="#siste">Siste nytt</a><a href="#">Norge</a><a href="#">Urix</a><a href="#">Politikk</a><a href="#">Økonomi</a><a href="#">Klima</a></div>
+    <div><h3>Sport</h3><a href="#sport">Fotball</a><a href="#">Ski</a><a href="#">Håndball</a><a href="#">Vintersport</a><a href="#">Resultater</a></div>
+    <div><h3>Distrikt</h3><a href="#distrikt">Nordland</a><a href="#distrikt">Rogaland</a><a href="#distrikt">Trøndelag</a><a href="#distrikt">Troms og Finnmark</a><a href="#distrikt">Alle distrikt</a></div>
+    <div><h3>Opplev</h3><a href="#tv">NRK TV</a><a href="#tv">NRK Radio</a><a href="#tv">NRK Super</a><a href="#vaer">Yr</a><a href="#spill">Spill</a></div>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO: today's top stories -->
+<section class="hero" id="top">
+  <div class="hero__media" id="heroMedia"></div>
+  <div class="hero__shade"></div>
+  <div class="hero__content">
+    <a class="hero__link" id="heroLink" href="#">
+      <span class="hero__kicker" id="heroKicker"></span>
+      <h1 class="hero__title" id="heroTitle"></h1>
+    </a>
+    <div class="hero__foot">
+      <div class="hero__progress" id="heroProgress"></div>
+      <div class="hero__meta"><span id="today"></span><span class="dot"></span><span>Oslo −3° lettskyet</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE strip -->
+<section class="live" aria-label="Nyhetsmeldinger">
+  <div class="live__label"><span class="pulse"></span>Nyhetsmeldinger</div>
+  <div class="live__track"><div class="live__rail" id="liveRail"></div></div>
+</section>
+
+<!-- Siste nytt -->
+<section class="latest" id="siste">
+  <div class="sec-head">
+    <h2 class="sec-title">Siste nytt</h2>
+    <a class="sec-more" href="#">Alle nyheter <svg><use href="#i-arrow"/></svg></a>
+  </div>
+  <div class="latest__grid" id="latestGrid"></div>
+</section>
+
+<!-- Statement -->
+<section class="statement">
+  <div class="statement__bg"><img src="assets/gen/hero.jpg" alt=""></div>
+  <p class="statement__text reveal-words">Vi er til for alle i Norge. Uavhengig journalistikk, fra Lindesnes til Vardø, døgnet rundt.</p>
+</section>
+
+<!-- TV og radio -->
+<section class="tv" id="tv">
+    <div class="sec-head sec-head--light">
+    <h2 class="sec-title">NRK TV og NRK Radio</h2>
+    <div class="tv__ctrl">
+      <button class="round" data-dir="-1" aria-label="Forrige"><svg style="transform:rotate(180deg)"><use href="#i-arrow"/></svg></button>
+      <button class="round" data-dir="1" aria-label="Neste"><svg><use href="#i-arrow"/></svg></button>
+    </div>
+  </div>
+  <div class="tv__rail" id="tvRail">
+    <a class="show show--xl" href="#"><div class="show__img"><img src="assets/img/s43.jpg" alt=""></div><div class="show__info"><span class="show__tag show__tag--live"><span class="pulse"></span>Direkte nå</span><h3>Dagsrevyen</h3><p>Dagens viktigste nyheter, klokka 19.00</p></div><span class="show__play"><svg><use href="#i-play"/></svg></span></a>
+    <a class="show" href="#"><div class="show__img"><img src="assets/gen/mic.jpg" alt=""></div><div class="show__info"><span class="show__tag">Radio · P2</span><h3>Dagsnytt 18</h3><p>Debatt og analyse hver ettermiddag</p></div><span class="show__play"><svg><use href="#i-play"/></svg></span></a>
+    <a class="show" href="#"><div class="show__img"><img src="assets/gen/cabin.jpg" alt=""></div><div class="show__info"><span class="show__tag">TV · NRK1</span><h3>Debatten</h3><p>Samfunnsdebatt hver torsdag</p></div><span class="show__play"><svg><use href="#i-play"/></svg></span></a>
+    <a class="show" href="#"><div class="show__img"><img src="assets/gen/ice.jpg" alt=""></div><div class="show__info"><span class="show__tag">Dokumentar</span><h3>Brennpunkt</h3><p>Undersøkende journalistikk</p></div><span class="show__play"><svg><use href="#i-play"/></svg></span></a>
+    <a class="show" href="#"><div class="show__img"><img src="assets/img/s34.jpg" alt=""></div><div class="show__info"><span class="show__tag">Sport · NRK1</span><h3>Sportsrevyen</h3><p>Ukens sport samlet, søndag kveld</p></div><span class="show__play"><svg><use href="#i-play"/></svg></span></a>
+  </div>
+</section>
+
+<!-- Sport -->
+<section class="sport" id="sport">
+  <div class="sport__visual">
+    <div class="sport__img"><img src="assets/gen/ski.jpg" alt=""></div>
+    <h2 class="sport__title">Sport</h2>
+  </div>
+  <div class="sport__list" id="sportList"></div>
+</section>
+
+<!-- Distrikt -->
+<section class="district" id="distrikt">
+  <div class="district__bg"><img src="assets/gen/lofoten.jpg" alt=""></div>
+  <div class="district__inner">
+    <div class="district__left">
+      <h2 class="sec-title">Nyheter fra ditt distrikt</h2>
+      <ul class="district__tabs" id="districtTabs" role="tablist"></ul>
+    </div>
+    <div class="district__stories" id="districtStories"></div>
+  </div>
+</section>
+
+<!-- Vær -->
+<section class="weather" id="vaer">
+  <div class="weather__img"><img src="assets/gen/weather.jpg" alt=""></div>
+  <div class="weather__shade"></div>
+  <div class="weather__content">
+    <div class="weather__now">
+      <div class="weather__place">Oslo</div>
+      <div class="weather__temp">−3°</div>
+      <div class="weather__desc">Lettskyet, svak vind fra nord. Snøbyger i kveld.</div>
+    </div>
+    <div class="weather__days">
+      <div><span>Ons</span><b>−1°</b><small>Snø</small></div>
+      <div><span>Tor</span><b>−4°</b><small>Klart</small></div>
+      <div><span>Fre</span><b>−6°</b><small>Klart</small></div>
+      <div><span>Lør</span><b>−2°</b><small>Skyet</small></div>
+      <div><span>Søn</span><b>0°</b><small>Sludd</small></div>
+    </div>
+    <a class="pill-link" href="#">Se full varsel på Yr <svg><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<!-- Spill -->
+<section class="games" id="spill">
+  <div class="games__text">
+    <h2 class="games__title">Gjør dagen morsommere</h2>
+    <p>Daglige minispill og hjernetrim fra NRK. Nye oppgaver hver morgen.</p>
+    <div class="games__chips">
+      <a href="#">Kryssord</a><a href="#">Ordjakt</a><a href="#">Sudoku</a><a href="#">Nyhetsquiz</a>
+    </div>
+  </div>
+  <div class="games__img"><img src="assets/gen/spill.jpg" alt=""></div>
+</section>
+
+<!-- Mer -->
+<section class="more">
+  <div class="sec-head"><h2 class="sec-title">Flere saker</h2></div>
+  <div class="more__grid" id="moreGrid"></div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <p class="footer__claim">Tips oss om saker du mener NRK bør se nærmere på.</p>
+    <div class="footer__cols">
+      <div><h4>NRK</h4><a href="#">Om NRK</a><a href="#">Kontakt NRK</a><a href="#">Jobb i NRK</a><a href="#">Presse</a></div>
+      <div><h4>Tjenester</h4><a href="#">NRK TV</a><a href="#">NRK Radio</a><a href="#">NRK Super</a><a href="#">Yr</a></div>
+      <div><h4>Hjelp</h4><a href="#">Personvern</a><a href="#">Informasjonskapsler</a><a href="#">Tilgjengelighet</a><a href="#">Tips oss</a></div>
+    </div>
+  </div>
+  <div class="footer__logo"><svg><use href="#nrk-logo"/></svg></div>
+  <div class="footer__bottom"><span>© NRK. Redesignkonsept av AKEO.</span><span>NRK arbeider etter Vær Varsom-plakatens regler for god presseskikk.</span></div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
